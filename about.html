@@ -19,7 +19,7 @@
 </header>
 
 
-<!-- ABOUT SECTION -->
+
 <section class="about-container">
 
     <img src="images/resim.png" alt="Profile Photo" class="profile-img">
@@ -28,12 +28,7 @@
 
         <h2 class="mynamee">Zeynep Selin Özgirçek</h2>
 
-        <p>
-        2nd-year Architecture student at Mimar Sinan Fine Arts University.
-        Working between art, space, and digital media.
-        Interested in collective spatial systems, visual narratives, and experimental representation.
-        </p>
-
+<p id="typewriter-text"></p>
         <p>
         Contact:
         <a href="mailto:20241301064@ogr.msgsu.edu.tr" class="email-link">
@@ -49,6 +44,24 @@
 <footer>
 <p><a href="index.html">Back to homepage</a></p>
 </footer>
+<script>
+  
+    const text = "2nd-year Architecture student at Mimar Sinan Fine Arts University. Working between art, space, and digital media. Interested in collective spatial systems, visual narratives, and experimental representation.";
+    
+    const speed = 40; 
+    let i = 0;
 
+    // Daktilo fonksiyonu
+    function typeWriter() {
+        if (i < text.length) {
+            document.getElementById("typewriter-text").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+
+  
+    window.onload = typeWriter;
+</script>
 </body>
 </html>
