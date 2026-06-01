@@ -7,20 +7,75 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="index-body">
-  <div class="top-left">
 
+    <div class="top-left">
+        <span>Portfolio</span>
     </div>
-  <nav class="top-nav">
-        <a href="about.html">About</a>
+
+    <nav class="top-nav">
+        <a href="about.html" id="link-about">About</a>
     </nav>
 
     <main class="yellow-landing">
-        <a href="anaokulu.html" class="hero-link">
+        
+        <a href="anaokulu.html" class="hero-link" id="link-kinder">
             <span class="main-title">bUbidiK</span>
-            <span class="sub-title">KindergardeN </span>
-          
+            <span class="sub-title">KindergardeN</span>
         </a>
+        
+        <a href="photography.html" class="hero-link" id="link-photo">
+            <span class="main-title">Urban</span>
+            <span class="sub-title">Photography</span>
+        </a>
+
     </main>
+
+    <script>
+      
+        const kinderLink = document.getElementById("link-kinder");
+        const photoLink = document.getElementById("link-photo");
+        const aboutLink = document.getElementById("link-about");
+
+    
+
+        if (kinderLink) {
+            const kinderSpans = kinderLink.querySelectorAll("span");
+            kinderLink.addEventListener("mouseenter", () => {
+                kinderSpans.forEach(span => {
+                    span.style.color = "orange";
+                    span.style.transition = "color 0.3s ease";
+                });
+            });
+            kinderLink.addEventListener("mouseleave", () => {
+                kinderSpans.forEach(span => span.style.color = "white"); 
+            });
+        }
+
+        // 2. Urban Photography -> Üzerine gelince Kırmızı
+        if (photoLink) {
+            const photoSpans = photoLink.querySelectorAll("span");
+            photoLink.addEventListener("mouseenter", () => {
+                photoSpans.forEach(span => {
+                    span.style.color = "red";
+                    span.style.transition = "color 0.3s ease";
+                });
+            });
+            photoLink.addEventListener("mouseleave", () => {
+                photoSpans.forEach(span => span.style.color = "white");
+            });
+        }
+
+        // 3. About Me -> Üzerine gelince Mavi
+        if (aboutLink) {
+            aboutLink.addEventListener("mouseenter", () => {
+                aboutLink.style.color = "#007BFF"; 
+                aboutLink.style.transition = "color 0.3s ease";
+            });
+            aboutLink.addEventListener("mouseleave", () => {
+                aboutLink.style.color = "";
+            });
+        }
+    </script>
 
 </body>
 </html>
