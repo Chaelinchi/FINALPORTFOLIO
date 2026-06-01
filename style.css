@@ -1,5 +1,6 @@
 
 
+
 *{
 margin:0;
 padding:0;
@@ -39,22 +40,15 @@ font-size:larger
 h3{
     background-color: aqua;
 }
-
-.attention{
-    background-color: rgb(240, 194, 9);
+.attention {
+    display: inline-block; /* Tüm satırı kaplamasın, sadece yazının genişliği kadar dolsun */
+    padding: 2px 8px; /* Yazı kenarlara çok yapışmasın, şık dursun */
+    background-image: linear-gradient(rgb(240, 194, 9), rgb(240, 194, 9)); /* Turuncu arka plan */
+    background-size: 0% 100%; /* Başlangıçta doluluk oranı yüzde sıfır */
+    background-repeat: no-repeat;
+    background-color: transparent; /* Varsayılan arka planı temizliyoruz */
+    transition: background-size 1.5s ease-in-out; /* 1.5 saniyede yumuşakça dolsun */
 }
-nav a{
-margin-left:10px;
-text-decoration:none;
-color:#111;
-font-size:14px;
-background-color: aqua;
-}
-
-nav a:hover{
-opacity:0.5;
-}
-
 
 /*sayfayı üçe bölmenin düzen şeyi*/
 
@@ -66,7 +60,7 @@ min-height:75vh;
 }
 
 .column{
-background:rgb(253, 250, 93);
+background:rgb(239, 236, 141);
 padding:30px;
 }
 
@@ -206,7 +200,7 @@ cursor:zoom-out;
 
 }
 .mynamee{
-    background-color: rgb(253, 250, 93);
+    background-color:rgb(239, 236, 141);
     display: inline-block;
 }
 
@@ -256,7 +250,7 @@ text-align:center;
 }
 
 .index-body {
-    background-color: rgb(253, 250, 93);
+    background-color:rgb(239, 236, 141);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -308,7 +302,7 @@ text-align:center;
 }
 
 .index-body {
-    background-color:rgb(247, 244, 68); 
+    background-color:rgb(239, 236, 141); 
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -444,4 +438,210 @@ nav a {
 .email-link:hover {
     color: #042c08; 
     text-decoration: underline; 
+}
+/* Daktilo yanıp sönen imleç efekti */
+#typewriter-text::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+    color: #111; 
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+/* Ana sayfa iki bağlantıyı yan yana dizme */
+.yellow-landing {
+    display: flex;
+    gap: 100px; /* İki yazı arasındaki boşluk */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Kentsel Fotoğrafçılık Sayfası Grid Yapısı */
+.photo-intro {
+    padding: 40px;
+    background:rgb(239, 236, 141);
+    text-align: center;
+}
+
+.photo-intro h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 40px;
+    background: white;
+}
+
+.photo-gallery img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    filter: grayscale(20%);
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.photo-gallery img:hover {
+    transform: scale(1.02);
+    filter: grayscale(0%);
+}
+
+@media (max-width: 900px) {
+    .yellow-landing {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .main-title { font-size: 5rem; }
+    .sub-title { font-size: 2.5rem; }
+}/* Fotoğraf sayfasını tamamen sarı yapma */
+.yellow-page {
+    background-color: rgb(239, 236, 141);
+}
+
+.yellow-page header {
+    background-color: transparent;
+    border-bottom: 1px solid #111; 
+}
+
+
+.yellow-page .photo-gallery {
+    background-color: transparent; 
+}
+.yellow-page footer {
+    background-color: transparent; 
+    border-top: 1px solid #111; 
+}
+/* --- JS LIGHTBOX (FOTOĞRAF BÜYÜTÜCÜ) --- */
+.lightbox {
+    display: none; /* JS tetikleyene kadar gizli kalır */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(17, 17, 17, 0.95); /* Çok koyu gri/siyah arka plan */
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    animation: zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Hafif sıçramalı havalı açılış */
+}
+
+.close-btn {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+
+.close-btn:hover {
+    color: rgb(253, 250, 93); 
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}canvas {
+    image-rendering: pixelated; /* Pixelleri keskin yapar */
+    transition: opacity 0.5s;
+}/* Fotoğraf ve etiketi bir arada tutan kutu */
+.photo-wrapper {
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    overflow: hidden; /* Dışa taşmaları engeller */
+}
+
+/* Önceden var olan img stilini yeni yapıya uyduruyoruz */
+.photo-wrapper img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    filter: grayscale(20%);
+    transition: filter 0.3s ease;
+    display: block; /* Fotoğrafın altındaki gereksiz boşluğu siler */
+}
+
+.photo-wrapper img:hover {
+    filter: grayscale(0%);
+}
+
+/* Beyaz Etiket Kısmı (Kapalı Hal) */
+.photo-label {
+    background-color: white;
+    color: #111;
+    overflow: hidden;
+    max-height: 45px; /* Sadece başlık görünecek kadar yükseklik */
+    transition: max-height 0.4s ease-in-out; /* Yumuşak açılma efekti */
+    cursor: pointer;
+    border-bottom: 2px solid #ddd; /* Altında hafif bir çizgi */
+}
+
+/* Beyaz Etiket Kısmı (Açık Hal) - JS ile eklenecek sınıf */
+.photo-label.expanded {
+    max-height: 200px; /* İçerik açıldığında uzayacağı maksimum boy */
+    border-bottom: 2px solid #e82121; /* Açılınca alt çizgi kırmızı olsun (havalı durur) */
+}
+
+/* Etiketin içindeki Başlık ve + İşareti */
+.label-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Detay yazıları */
+.label-details {
+    padding: 0 15px 15px 15px;
+    font-size: 13px;
+    color: #444;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    transition-delay: 0.1s; /* Yazılar kutu açıldıktan hemen sonra belirsin */
+}
+
+/* Etiket açıldığında yazıları görünür yap */
+.photo-label.expanded .label-details {
+    opacity: 1;
+}/* Zarif ve Dikkat Çekmeyen Not */
+.subtle-note {
+    text-align: center;
+    font-size: 12px;
+    color: #494848; /* Çok koyu olmayan, yumuşak bir gri */
+    font-style: italic;
+    padding: 10px 40px 30px 40px;
+    letter-spacing: 0.5px;
+    opacity: 0.6; /* Saydamlık vererek geri plana atıyoruz */
+    transition: opacity 0.3s ease;
+    background-color: transparent;
+}
+
+/* Faresiyle üstüne gelene küçük bir sürpriz (yazı netleşir) */
+.subtle-note:hover {
+    opacity: 1;
+    color: #333;
 }
