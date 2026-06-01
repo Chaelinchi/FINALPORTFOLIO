@@ -1,0 +1,447 @@
+
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+/*Anaokulu sayfası*/
+body{
+font-family:Helvetica, Arial, sans-serif;
+background:white
+color #111;
+line-height:1.6;
+
+}
+html, body, *, input, textarea, a, div, p{
+cursor: url("images/cursor.png") 16 14, auto !important;
+} /*hocam yazı seçince eski haline dönüyor imleç her şeyi denedim ama çözüm bulamadım ):*/
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 40px;
+border-bottom:1px solid #ddd;
+background:white;
+}
+
+h1{
+font-weight:500px;
+letter-spacing:1px;
+background-color: #e82121;
+font-size:larger
+}
+
+
+
+h3{
+    background-color: aqua;
+}
+
+.attention{
+    background-color: rgb(240, 194, 9);
+}
+nav a{
+margin-left:10px;
+text-decoration:none;
+color:#111;
+font-size:14px;
+background-color: aqua;
+}
+
+nav a:hover{
+opacity:0.5;
+}
+
+
+/*sayfayı üçe bölmenin düzen şeyi*/
+
+.grid{
+display:flex;
+gap:40px;
+padding:60px 40px;
+min-height:75vh;
+}
+
+.column{
+background:rgb(253, 250, 93);
+padding:30px;
+}
+
+.text{
+width:25%;
+}
+
+.slider-column{
+width:45%;
+}
+
+.gallery{
+width:30%;
+}
+
+.title{
+margin-bottom:15px;
+font-weight:400;
+letter-spacing:1px;
+}
+::selection {
+    background: rgba(232, 33, 33, 0.2); 
+    cursor: url("images/cursor.png") 16 14, auto !important;
+}
+
+
+
+/*kayan görseller için olan yer,burda baya bi AI'dan yardım aldım*/
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 600px; 
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.slider input {
+    display: none; 
+}
+
+.slides {
+    display: flex;
+    width: 500%; 
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.slide {
+    width: 20%;
+    height: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dots label {
+    width: 12px;
+    height: 12px;
+    border: 1px solid #111;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#slide1:checked ~ .slides { transform: translateX(0%); }
+#slide2:checked ~ .slides { transform: translateX(-20%); }
+#slide3:checked ~ .slides { transform: translateX(-40%); }
+#slide4:checked ~ .slides { transform: translateX(-60%); }
+#slide5:checked ~ .slides { transform: translateX(-80%); }
+
+#slide1:checked ~ .dots label[for="slide1"],
+#slide2:checked ~ .dots label[for="slide2"],
+#slide3:checked ~ .dots label[for="slide3"],
+#slide4:checked ~ .dots label[for="slide4"],
+#slide5:checked ~ .dots label[for="slide5"] {
+    background: #111;
+}
+
+
+/*Sağ büyümeli resim kısmı*/
+
+.gallery input{
+display:none;
+}
+
+.gallery img{
+width:100%;
+height:120px;
+object-fit:cover;
+cursor:zoom-in;
+transition:0.3s;
+}
+
+.gallery input:checked + img{
+position:fixed;
+top:0;
+left:0;
+width:100vw;
+height:100vh;
+object-fit:contain;
+background:rgba(0,0,0,0.95);
+z-index:9999;
+cursor:zoom-out;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+.profile-img {
+    width: 220px;
+    height: auto;
+}
+
+.about-text {
+    max-width: 500px;
+
+}
+.mynamee{
+    background-color: rgb(253, 250, 93);
+    display: inline-block;
+}
+
+/*lisanslama kısmı*/
+footer{
+text-align:center;
+padding:30px;
+border-top:1px solid #ddd;
+background:rgb(252, 251, 251);
+}
+
+/* baska formatta kaymasın diye böyle yapmak gerekiyormuş bunu da AI'dan öğrendim */
+
+@media(max-width:900px){
+
+.grid{
+flex-direction:column;
+}
+
+.text,
+.slider-column,
+.gallery{
+width:100%;
+}
+
+.slider{
+height:260px;
+}
+
+.slides img{
+height:260px;
+}
+
+.about{
+padding:40px;
+text-align:center;
+}
+
+}
+/*Giriş sayfası*/
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.index-body {
+    background-color: rgb(253, 250, 93);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    overflow:hidden
+}
+
+.yellow-landing {
+    text-align: center;
+}
+
+.hero-link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.hero-link:hover {
+    transform: scale(1.05);
+}
+
+.main-title {
+    font-family: "Barriecito", system-ui;
+    font-size: 10rem; /* Oldukça büyük */
+    color: white;
+    line-height: 0.8;
+}
+
+.sub-title {
+    font-family: "Barriecito", system-ui;
+    font-size: 10rem;
+    color: white;
+    letter-spacing: 5px;
+}
+
+/* Mobil için boyut ayarı */
+@media (max-width: 768px) {
+    .main-title { font-size: 5rem; }
+    .sub-title { font-size: 2.5rem; }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.index-body {
+    background-color:rgb(247, 244, 68); 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative; 
+}
+
+.top-nav {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    z-index: 10;
+}
+
+.top-nav a {
+    text-decoration: none;
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background-color: transparent; 
+    padding: 0; 
+    transition: opacity 0.3s ease;
+}
+
+.top-nav a:hover {
+    opacity: 0.6;
+    background-color: transparent; 
+}
+
+nav a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #111;
+    font-size: 14px;
+    
+}
+
+.yellow-landing {
+    text-align: center;
+}
+
+.hero-link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.hero-link:hover {
+    transform: scale(1.05) rotate(-1deg);
+}
+
+.main-title {
+    font-family: "Barriecito", system-ui;
+    font-size: 10rem;
+    color: white;
+    line-height: 0.8;
+}
+
+.sub-title {
+    font-family: "Barriecito", system-ui;
+    font-size: 5rem;
+    color: white;
+    letter-spacing: 5px;
+}
+
+/* MOBİL AYARLAR */
+@media (max-width: 768px) {
+    .top-nav { top: 20px; right: 20px; }
+    .main-title { font-size: 5rem; }
+    .sub-title { font-size: 2.2rem; }
+}
+
+.top-left {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    z-index: 10;
+}
+
+.top-left span {
+    color: white;
+    font-family:'Barriecito',system-ui;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+.top-nav {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    z-index: 10;
+}
+
+.top-nav a {
+    text-decoration: none;
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background-color: transparent;
+    transition: opacity 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .top-left, .top-nav {
+        top: 20px;
+    }
+    .top-left { left: 20px; }
+    .top-nav { right: 20px; }
+    
+    .top-left span, .top-nav a {
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+}
+/*HAKKIMDA KISMI*/
+.email-link {
+    color: #1a9957; 
+    text-decoration: none; 
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+.email-link:hover {
+    color: #042c08; 
+    text-decoration: underline; 
+}
