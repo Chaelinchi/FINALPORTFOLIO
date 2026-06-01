@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="yellow-page">
 
     <header>
         <h1>URBAN PHOTOGRAPHY</h1>
@@ -22,20 +22,177 @@
         <p>Exploring urban chaos, the hidden layers of the city, and the traces of consumer culture.</p>
     </section>
 
-    <!-- Fotoğrafların geleceği galeri kısmı -->
     <section class="photo-gallery">
-        <!-- Klasöründeki fotoğraf isimleriyle buraları değiştirebilirsin -->
-        <img src="images/photo1.jpg" alt="Urban Scene 1">
-        <img src="images/photo2.jpg" alt="Urban Scene 2">
-        <img src="images/photo3.jpg" alt="Urban Scene 3">
-        <img src="images/photo4.jpg" alt="Urban Scene 4">
-        <img src="images/photo5.jpg" alt="Urban Scene 5">
-        <img src="images/photo6.jpg" alt="Urban Scene 6">
+        
+        <div class="photo-wrapper">
+            <img src="images/photo1.jpg.jpeg" alt="Urban Scene 1" class="gallery-img">
+            <div class="photo-label">
+                <div class="label-header">
+                    <span class="label-title"></span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="label-details">
+                    <p>Shutters, wood, and lace, all blending in perfect harmony.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-wrapper">
+            <img src="images/photo2.jpg.png" alt="Urban Scene 2" class="gallery-img">
+            <div class="photo-label">
+                <div class="label-header">
+                    <span class="label-title"> </span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="label-details">
+                    <p>A Vans shoe posing against my aunt's wet tiles.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-wrapper">
+            <img src="images/photo.3.jpg" alt="Urban Scene 3" class="gallery-img">
+            <div class="photo-label">
+                <div class="label-header">
+                    <span class="label-title"> </span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="label-details">
+                    <p>A corner store,what can i say.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-wrapper">
+            <img src="images/photo4.jpeg" alt="Urban Scene 4" class="gallery-img">
+            <div class="photo-label">
+                <div class="label-header">
+                    <span class="label-title"></span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="label-details">
+                    <p>Living traces within rectangles.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-wrapper">
+            <img src="images/photo5.jpeg" alt="Urban Scene 5" class="gallery-img">
+            <div class="photo-label">
+                <div class="label-header">
+                    <span class="label-title"></span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="label-details">
+                    <p>A little salt.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-wrapper">
+            <img src="images/photo6.jpeg" alt="Urban Scene 6" class="gallery-img">
+            <div class="photo-label">
+                <div class="label-header">
+                    <span class="label-title"></span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="label-details">
+                    <p>How bright can an unfinished construction actually get?</p>
+                </div>
+            </div>
+        </div>
+        
     </section>
+</section>
+
+    <div class="subtle-note">
+        you can click photos and the plus sign
+    </div>
 
     <footer>
         <p>© 2026 Zeynep Selin Özgirçek</p>
     </footer>
+  
+    <div id="lightbox-modal" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
 
+    <script>
+        // 1. BEYAZ ETİKETLER (Açılır Kapanır Kısım)
+        const labels = document.querySelectorAll('.photo-label');
+
+        labels.forEach(label => {
+            label.addEventListener('click', () => {
+                label.classList.toggle('expanded'); // Aç/kapat
+                const icon = label.querySelector('.toggle-icon');
+                
+                // İkonu + veya - yap
+                if (label.classList.contains('expanded')) {
+                    icon.textContent = '—';
+                } else {
+                    icon.textContent = '+';
+                }
+            });
+        });
+
+     
+        const modal = document.getElementById("lightbox-modal");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const closeBtn = document.querySelector(".close-btn");
+        const galleryImages = document.querySelectorAll(".gallery-img"); 
+
+        galleryImages.forEach(img => {
+            img.style.cursor = "zoom-in"; 
+            img.addEventListener("click", () => {
+                modal.style.display = "flex"; 
+                lightboxImg.src = img.src;    
+            });
+        });
+
+        closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+const follower = document.createElement('div');
+follower.style.position = 'fixed';
+follower.style.padding = '6px 12px';
+follower.style.backgroundColor = '#e82121'; 
+follower.style.color = 'white';
+follower.style.fontSize = '10px';
+follower.style.fontWeight = 'bold';
+follower.style.textTransform = 'uppercase';
+follower.style.letterSpacing = '1px';
+follower.style.pointerEvents = 'none'; 
+follower.style.opacity = '0';
+follower.style.transform = 'translate(-50%, -50%) scale(0.5)';
+follower.style.transition = 'transform 0.2s, opacity 0.2s';
+follower.style.zIndex = '10000';
+follower.innerText = 'EXPAND';
+document.body.appendChild(follower);
+
+
+window.addEventListener('mousemove', (e) => {
+    follower.style.left = e.clientX + 'px';
+    follower.style.top = e.clientY + 'px';
+});
+
+
+document.querySelectorAll('.photo-wrapper').forEach(wrapper => {
+    wrapper.addEventListener('mouseenter', () => {
+        follower.style.opacity = '1';
+        follower.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+    wrapper.addEventListener('mouseleave', () => {
+        follower.style.opacity = '0';
+        follower.style.transform = 'translate(-50%, -50%) scale(0.5)';
+    });
+});
+    </script>
 </body>
 </html>
